@@ -15,4 +15,16 @@ for num in $(seq 1 $tries); do
 	if ![["$guess" =~ [1-10]]]; then
 		echo "Please enter a number 1 through 10"
 		continue
-	
+	fi
+
+	if (($guess == $secretnum)); then
+		echo "Congrats! You guessed the secret number!
+		exit
+	elif (($guess < $secretnum)); then
+		echo "your guess is too low..."
+	else
+		echo "your guess is too high.."
+	fi
+done
+
+echo "You\'ve used all your tries! The secret number was $secretnum."
